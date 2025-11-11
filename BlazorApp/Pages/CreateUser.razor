@@ -5,32 +5,45 @@
 <div class="login-page-background">
     <div class="login-container">
         
-        <h3>Log ind</h3>
-
-        <!-- Formular til login-->
+        <h3>Opret Bruger</h3>
+        
         <EditForm Model="@user" OnValidSubmit="OnClickLogin">
             <DataAnnotationsValidator/>
-
-            <div class="form-floating-group">
-                <InputText id="un" class="form-control" @bind-Value="user.Name" placeholder="Username"/>
+            
+            <div class="form-floating-group gap-1">
                 <label for="un">Username</label>
+                <InputText id="un" class="form-control" @bind-Value="user.Name" placeholder="Username"/>
             </div>
-
-            <div class="form-floating-group">
+            <br/>
+            <div class="form-floating-group gap-1">
+                <label for="pwd">Adgangskode</label>
                 <InputText id="pwd"
                            type="@PasswordType"
                            class="form-control"
                            @bind-Value="user.Password"
                            placeholder="Password"/>
-                <label for="pwd">Adgangskode</label>
-                <i class="bi bi-eye" @onclick="ToggleAdgangskodeVisibility">
-                    
-                </i>
+                <i class="bi bi-eye" @onclick="ToggleAdgangskodeVisibility"></i>
             </div>
-
+            <br/>
+            <div class="form-floating-group gap-1">
+                <label for="un">E-Mail</label>
+                <InputText id="em" class="form-control" @bind-Value="user.Email" placeholder="E-Mail"/>
+            </div>
+            <br/>
+            <div class="form-floating-group gap-1">
+                <label for="un">Adresse</label>
+                <InputText id="ad" class="form-control" @bind-Value="user.Adress" placeholder="Adresse"/>
+            </div>
+            <br/>
+            <div class="form-floating-group gap-1">
+                <label for="un">Tlf nummer</label>
+                <InputText id="pn" class="form-control" @bind-Value="user.Phone" placeholder="Tlf nummer"/>
+            </div>
+            <br/>
             <div style="text-align: center">
-                <button type="submit" class="btn btn-primary">Log ind</button>
+                <button type="submit" class="btn btn-primary">Opret Bruger</button>
             </div>
+            
         </EditForm>
 
         @if (!string.IsNullOrEmpty(errorText))

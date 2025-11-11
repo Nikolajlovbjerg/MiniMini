@@ -1,7 +1,7 @@
 /* Login baggrund */
 .login-page-background {
     min-height: 100vh;
-    width: calc(100vw - 1.25rem); /* Subtract sidebar width */
+    width: 110%; /* Subtract sidebar width */
     margin: 0;
     padding: 0;
     position: absolute;
@@ -21,8 +21,6 @@
     border-radius: 14px;
     border: 1px solid #FFFFFF;
 }
-
-
 h3 {
     text-align: center;
     margin-bottom: 1.5rem;
