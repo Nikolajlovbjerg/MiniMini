@@ -1,12 +1,12 @@
 /* Login baggrund */
 .login-page-background {
     min-height: 100vh;
-    width: 110%; /* Subtract sidebar width */
+    width: 100%; /* Subtract sidebar width */
     margin: 0;
     padding: 0;
     position: absolute;
     top: 0;
-    left: 1.25rem; /* Push right by the sidebar width */
+    left: 2rem; /* Push right by the sidebar width */
     display: flex;
     justify-content: center;
     align-items: center;
