@@ -1,6 +1,24 @@
-﻿namespace ServerAPI.Controllers
+﻿using Core;
+using Microsoft.AspNetCore.Mvc;
+using ServerAPI.Repo;
+
+namespace ServerAPI.Controllers
 {
-    public class CreateUserController
+    [ApiController]
+    [Route("api/bruger")]
+    public class CreateUserController : ControllerBase
     {
+        private ICreateUserRepo cUser;
+
+        public CreateUserController(ICreateUserRepo cUser)
+        {
+            this.cUser = cUser;
+        }
+
+        [HttpPost]
+        public void Add(User user) 
+        {
+            cUser.Add(user);
+        }
     }
 }
