@@ -14,4 +14,5 @@ public class User
     public string Adress { get; set; } = String.Empty;
     
     public string Phone { get; set; } = String.Empty;
+    
 }

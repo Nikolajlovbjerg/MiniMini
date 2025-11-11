@@ -1,4 +1,5 @@
 @using Core
+@inject HttpClient Http
 @using BlazorApp.Service
 @page "/CreateUser"
 
@@ -7,7 +8,7 @@
         
         <h3>Opret Bruger</h3>
         
-        <EditForm Model="@user" OnValidSubmit="OnClickCreateUser">
+        <EditForm Model="@user">
             <DataAnnotationsValidator/>
             
             <div class="form-floating-group gap-1">
@@ -41,7 +42,7 @@
             </div>
             <br/>
             <div>
-                <button type="submit" class="btn btn-primary">Opret Bruger</button>
+                <button type="submit" class="btn btn-primary" @onclick="OnClickCreateUser">Opret Bruger</button>
             </div>
             
         </EditForm>
@@ -57,24 +58,40 @@
 </div>
 
 @code {
-    User user = new();
-    
-    //Bruges til at vise errortext hvis relevant - ellers er den tom
-    string errorText = "";
-    //Bruges til at skjule visningen af adgangskoden i vores ToggleAdgangskodeVisibility 
-    bool visPassword = false;
+    private User user = new();          // single user bound to the form
+    private string errorText = "";      // show any error
 
-    string PasswordType => visPassword ? "text" : "password";
-    
-    //Skifter mellem visning og skjul af adgangskodefeltet
-    void ToggleAdgangskodeVisibility()
+    protected override Task OnInitializedAsync()
     {
-        visPassword = !visPassword;
+        // No need to fetch a list here for a create page
+        return Task.CompletedTask;
     }
-    
+
+    private string PasswordType => visPassword ? "text" : "password";
+    private bool visPassword = false;
+
+    private void ToggleAdgangskodeVisibility() => visPassword = !visPassword;
+
     private async Task OnClickCreateUser()
     {
-        
-        
+        errorText = "";
+        try
+        {
+            var response = await Http.PostAsJsonAsync("http://localhost:5157/api/bruger", user);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // clear the form after successful create
+                user = new User();
+            }
+            else
+            {
+                errorText = $"Kunne ikke oprette bruger (status { (int)response.StatusCode }).";
+            }
+        }
+        catch
+        {
+            errorText = "Fejl ved forbindelse til API'et.";
+        }
     }
 }

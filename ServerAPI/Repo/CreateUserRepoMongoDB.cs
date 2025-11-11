@@ -24,16 +24,9 @@ namespace ServerAPI.Repo
 
         public void Add(User user)
         {
-            var max = 0;
-            if (cUser.CountDocuments(Builders<User>.Filter.Empty) > 0)
-            {
-                max = MaxId();
-            }
-            user.Id = max + 1;
+            user.Id = new Random().Next(1, int.MaxValue);
             cUser.InsertOne(user);
         }
-
-        private int MaxId() => GetAll().Select(x => x.Id).Max();
 
     }
 
