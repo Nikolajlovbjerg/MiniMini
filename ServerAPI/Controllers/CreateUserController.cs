@@ -20,5 +20,11 @@ namespace ServerAPI.Controllers
         {
             cUser.Add(user);
         }
+
+        [HttpGet]
+        public IEnumerable<User> GetAll() 
+        { 
+            return cUser.GetAll();
+        }
     }
 }
