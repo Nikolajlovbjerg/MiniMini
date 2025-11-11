@@ -12,4 +12,9 @@
         <PackageReference Include="MongoDB.Driver" Version="3.5.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\BlazorApp\BlazorApp.csproj" />
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+
 </Project>
