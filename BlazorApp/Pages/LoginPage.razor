@@ -1,16 +1,15 @@
 @page "/login"
 @using Core
 @using Blazored.LocalStorage
-@inject ILocalStorageService localStorage
+
 @using BlazorApp.Service
 @inject NavigationManager navManager
 <PageTitle>Log ind</PageTitle>
 
 <div class="login-page-background">
     <div class="login-container">
-        
         <h3>Log ind</h3>
-
+        
         <!-- Formular til login-->
         <EditForm Model="@user" OnValidSubmit="OnClickLogin">
 
@@ -33,6 +32,7 @@
 
             <div style="text-align: center">
                 <button type="submit" class="btn btn-primary">Login</button>
+                <button type="button" class="btn btn-secondary" @onclick="CreateUser">Opret Bruger</button>
             </div>
         </EditForm>
 
@@ -72,11 +72,11 @@
         {
             errorText = "Wrong email or password - try again...";
         }
-        else
-        {
-            await localStorage.SetItemAsync("user", userObject);
-            navManager.NavigateTo("/", forceLoad: true); 
-        }
+        
+    }
+    void CreateUser()
+    {
+        navManager.NavigateTo("/createuser");
     }
 }
 

@@ -26,6 +26,29 @@
 
 }
 
+/* Login-Knap */
+.btn-primary{
+    background-color: #105bca;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Opret-Knap */
+.btn-secondary {
+    background-color: #105bca; 
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
 
 h3 {
     text-align: center;
