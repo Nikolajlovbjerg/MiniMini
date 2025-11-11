@@ -1,7 +1,7 @@
 @page "/login"
 @using Core
 @using Blazored.LocalStorage
-@inject ILocalStorageService localStorage
+
 @using BlazorApp.Service
 @inject NavigationManager navManager
 <PageTitle>Log ind</PageTitle>
@@ -72,11 +72,7 @@
         {
             errorText = "Wrong email or password - try again...";
         }
-        else
-        {
-            await localStorage.SetItemAsync("user", userObject);
-            navManager.NavigateTo("/", forceLoad: true); 
-        }
+        
     }
 }
 
