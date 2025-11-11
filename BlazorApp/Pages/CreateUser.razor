@@ -7,7 +7,7 @@
         
         <h3>Opret Bruger</h3>
         
-        <EditForm Model="@user" OnValidSubmit="OnClickLogin">
+        <EditForm Model="@user" OnValidSubmit="OnClickCreateUser">
             <DataAnnotationsValidator/>
             
             <div class="form-floating-group gap-1">
@@ -40,7 +40,7 @@
                 <InputText id="pn" class="form-control" @bind-Value="user.Phone" placeholder="Tlf nummer"/>
             </div>
             <br/>
-            <div style="text-align: center">
+            <div>
                 <button type="submit" class="btn btn-primary">Opret Bruger</button>
             </div>
             
@@ -72,9 +72,9 @@
         visPassword = !visPassword;
     }
     
-    private async Task OnClickLogin()
+    private async Task OnClickCreateUser()
     {
-        UserRepo userRepo = new();
+        
         
     }
 }
